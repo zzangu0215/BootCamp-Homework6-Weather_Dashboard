@@ -17,7 +17,7 @@ function fetchWeatherForCity(city) {
     })
     .then(function (data) {
 
-        currentForeCast();
+        currentForeCast(city);
         fiveDayForecast(data);
         $("#search-input").val("");
     })
@@ -56,9 +56,9 @@ function fiveDayForecast(data) {
     }
 }
 
-function currentForeCast() {
+function currentForeCast(city) {
 
-    var city = $("#search-input").val().trim();
+    //var city = $("#search-input").val().trim();
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + 
                     city + "&appid=" + apiKey;
@@ -68,6 +68,7 @@ function currentForeCast() {
     })
     .then(function (data) {
 
+        console.log(data);
         $("#current-city-forecast").empty();
 
         var cityName = data.name;
@@ -102,7 +103,6 @@ function getSearchLists() {
     $("#city-list").empty();
 
     var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
-    console.log(searchHistory);
 
     var numOfCities = searchHistory.length;
 
