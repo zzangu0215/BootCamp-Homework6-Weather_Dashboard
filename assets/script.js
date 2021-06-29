@@ -89,10 +89,44 @@ function currentForeCast(city) {
                     <p class="card-text current-temp">Temperature: ${fahrenheit}°F</p>
                     <p class="card-text current-wind">Wind Speed: ${wind}MPH</p>
                     <p class="card-text current-humidity">Humidity: ${humidity}%</p>
+                    <p class="card-text current-uv"></p>
                 </div>
             </div>`;
 
         $("#current-city-forecast").append(appendBlock);
+
+        var latitude = data.coord.lat;
+        var longitude = data.coord.lon;
+        var uvURL = "https://api.openweathermap.org/data/2.5/uvi/forecast?&units=imperial&appid="
+                     + apiKey
+                     + "&q=&lat="
+                     + latitude
+                     + "&lon="
+                     + longitude;
+        $.ajax({
+            url: uvURL,
+            method: "GET", 
+        })
+        .then(function (data) {
+            //var uvIndexDisplay = $("<button>");
+            console.log(data);
+            var uvValue = data[0].value;
+            var appendBlock = ``;
+
+            if (uvValue > 10) {
+                appendBlock = 
+                    `<button class="btn btn-danger">UV Index: ${uvValue}</button>`;
+            } else if (uvValue > 6) {
+                appendBlock = 
+                    `<button class="btn btn-warning">UV Index: ${uvValue}</button>`;
+            } else {
+                appendBlock = 
+                    `<button class="btn btn-success">UV Index: ${uvValue}</button>`;
+            }
+            
+            $(".current-uv").append(appendBlock);
+            
+        })
 
     })                
 
