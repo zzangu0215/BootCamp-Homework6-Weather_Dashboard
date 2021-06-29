@@ -143,13 +143,8 @@ $("#search-button").on("click", function (event) {
     searchHistory.push(citySearch);
     localStorage.setItem("city", JSON.stringify(searchHistory));
     getSearchLists();
-    // var searchCityList = JSON.parse(localStorage.getItem("search-list"));
-    // searchCityList[city] = true;
-    // localStorage.setItem("search-list"), JSON.stringify(searchCityList);
 
     fetchWeatherForCity(city);
-
-    // $("#search-input").val("");
 
 });
 
