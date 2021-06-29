@@ -12,10 +12,19 @@ Come to my [**Weather Dashboard**](https://zzangu0215.github.io/BootCamp-Homewor
 
     ![Image Caption](images/after-search.PNG)
 
+2. You can see the **UV Index** indicating with different colors based on its level. 
+    - If **UV Index** is greater than 8.5, it's indicated as **RED**.
+    - IF **UV Index** is less than 8.5, but greater than 5, it's indicated as **YELLOW**.
+    - IF **UV Index** is less than 5, it's indicated as **GREEN**.
+
+    | ![Image Caption](images/uv-index-good.PNG) | ![Image Caption](images/uv-index-moderate.PNG) | 
+    |----|----|
+    | ![Image Caption](images/uv-index-bad.PNG) | ![Image Caption](images/uv-index-bad2.PNG) | 
+
 
 ## Demo Video
 
-Here is the [**Demo Video Link**](https://youtu.be/4ceMmFoBMcc)
+Here is the [**Demo Video Link**](https://youtu.be/LpLV8uF9pLg)
 
 ## Author
 

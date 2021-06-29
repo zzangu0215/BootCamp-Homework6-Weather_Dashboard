@@ -113,10 +113,10 @@ function currentForeCast(city) {
             var uvValue = data[0].value;
             var appendBlock = ``;
 
-            if (uvValue > 10) {
+            if (uvValue > 8.5) {
                 appendBlock = 
                     `<button class="btn btn-danger">UV Index: ${uvValue}</button>`;
-            } else if (uvValue > 6) {
+            } else if (uvValue > 5) {
                 appendBlock = 
                     `<button class="btn btn-warning">UV Index: ${uvValue}</button>`;
             } else {
