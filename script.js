@@ -1,5 +1,6 @@
 $(".forecast").hide();
 $(".current-weather").hide();
+getSearchLists();
 
 var apiKey = "7df541090361c190f5ec65dbaea6bf16";
 
@@ -18,16 +19,11 @@ function fetchWeatherForCity(city) {
 
         currentForeCast();
         fiveDayForecast(data);
-
+        $("#search-input").val("");
     })
 }
 
 function fiveDayForecast(data) {
-
-    console.log(data);
-    console.log(data.city);
-    console.log(data.list[0]);
-    console.log(data.list[0].dt_txt.split(' ')[0]);
 
     $("#five-day-forecast").empty();
 
@@ -73,7 +69,6 @@ function currentForeCast() {
     .then(function (data) {
 
         $("#current-city-forecast").empty();
-        console.log(data);
 
         var cityName = data.name;
         var date = moment().format("MMM Do YYYY");
@@ -102,6 +97,33 @@ function currentForeCast() {
 
 }
 
+function getSearchLists() {
+
+    $("#city-list").empty();
+
+    var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+    console.log(searchHistory);
+
+    var numOfCities = searchHistory.length;
+
+    for (var i=0; i<numOfCities; i++) {
+
+        var appendBlock = 
+            `<button class="list-group-item list-group-item-action">
+                ${searchHistory[i].name}
+            </button>`;
+
+        $("#city-list").append(appendBlock);
+    }
+}
+
+$("#city-list").on("click", "button", function(event) {
+    event.preventDefault();
+
+    var city = $(this).text();
+
+    fetchWeatherForCity(city);
+})
 
 $("#search-button").on("click", function (event) {
 
@@ -113,12 +135,22 @@ $("#search-button").on("click", function (event) {
         return;
     }
 
-    localStorage.setItem("city", city);
+    var searchHistory = JSON.parse(localStorage.getItem("city")) || [];
+    var citySearch = {
+        name: city,
+        value: true,
+    }
+    searchHistory.push(citySearch);
+    localStorage.setItem("city", JSON.stringify(searchHistory));
+    getSearchLists();
     // var searchCityList = JSON.parse(localStorage.getItem("search-list"));
     // searchCityList[city] = true;
     // localStorage.setItem("search-list"), JSON.stringify(searchCityList);
 
     fetchWeatherForCity(city);
+
+    // $("#search-input").val("");
+
 });
 
 $("#search-button").keypress(function(event) {
