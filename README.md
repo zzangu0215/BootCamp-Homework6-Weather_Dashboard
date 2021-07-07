@@ -29,6 +29,6 @@ Here is the [**Demo Video Link**](https://youtu.be/LpLV8uF9pLg)
 ## Author
 
 - **Jun Park**
-    - Portfolio: [Portfolio](https://zzangu0215.github.io/BootCamp-Homework2/) (to be changed)
+    - Portfolio: [**Portfolio**](https://zzangu0215.github.io/portfolio/) (to be updated)
     - Email: tajo0215@gmail.com
     - SNS: https://www.instagram.com/o0ojunny/
