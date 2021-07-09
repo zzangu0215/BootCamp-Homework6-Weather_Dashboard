@@ -1,6 +1,6 @@
 # Weather Dashboard
 Do you want to search weather for your favorite cities?
-Come to my [**Weather Dashboard**](https://zzangu0215.github.io/BootCamp-Homework6-Weather_Dashboard/) to be a forecaster!
+Come to my [**Weather Dashboard**](https://zzangu0215.github.io/Weather_Dashboard/) to be a forecaster!
 
 
 ## Features
